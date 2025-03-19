@@ -9,14 +9,16 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase
 
 // Your web app's Firebase configuration
 // Firebase configuration
+// Firebase configuration - Replace with your own config
 const firebaseConfig = {
-  apiKey: "AIzaSyDH3KD_6Qak4SLQlZcKaEvl9-wMX48WaQ4",
-  authDomain: "trends-virals.firebaseapp.com",
-  projectId: "trends-virals",
-  storageBucket: "trends-virals.appspot.com",
-  messagingSenderId: "704676896111",
-  appId: "1:704676896111:web:cd1a8f526b7eb67c29dc9a"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
