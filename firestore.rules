@@ -1,0 +1,72 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if the current user is an admin
+    function isAdmin() {
+      return request.auth != null && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+    
+    // Allow authenticated users to read and write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      // Add admin access to all user documents
+      allow read, write: if isAdmin();
+    }
+    
+    // Allow access to community posts
+    match /community_posts/{postId} {
+      allow read: if true;  // Everyone can read posts
+      allow create: if request.auth != null;  // Only authenticated users can create
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.userId;  // Only post author can update/delete
+      // Add admin access to moderate all posts
+      allow update, delete: if isAdmin();
+    }
+    
+    // Allow access to post comments
+    match /post_comments/{commentId} {
+      allow read: if true;  // Everyone can read comments
+      allow create: if request.auth != null;  // Only authenticated users can comment
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.userId;  // Only comment author can update/delete
+      // Add admin access to moderate all comments
+      allow update, delete: if isAdmin();
+    }
+    
+    // Allow access to post likes
+    match /post_likes/{likeId} {
+      allow read: if true;  // Everyone can see who liked a post
+      allow create, delete: if request.auth != null;  // Only authenticated users can like/unlike
+    }
+    
+    // Allow access to trending hashtags
+    match /trending_hashtags/{tagId} {
+      allow read: if true;  // Everyone can read trending tags
+      allow write: if request.auth != null;  // Only authenticated users can update
+    }
+    
+    // Add admin access to featured posts
+    match /featured_posts/{postId} {
+      allow read: if true;  // Everyone can read
+      allow create, update, delete: if isAdmin();  // Only admins can modify
+    }
+    
+    // Add admin access to news posts
+    match /news_posts/{postId} {
+      allow read: if true;  // Everyone can read
+      allow create, update, delete: if isAdmin();  // Only admins can modify
+    }
+    
+    // Add admin access to newsletter subscribers
+    match /newsletter_subscribers/{subscriberId} {
+      allow read: if true;  // Public subscription count
+      allow create: if request.auth != null || true;  // Allow anonymous subscriptions
+      allow update, delete: if isAdmin();  // Only admins can manage subscribers
+    }
+    
+    // Default deny for everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

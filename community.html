@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Trends Virals</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/community.css">
+    <!-- Inline critical CSS to avoid MIME type issues -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body data-page="community">
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo-container">
+            <h1><a href="index.html">Trends Virals</a></h1>
+            <p class="tagline">Discover What's Trending</p>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="community.html" class="active highlight">Community</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-section">
+            <a href="login.html" class="btn login-btn">Log In</a>
+            <a href="signup.html" class="btn signup-btn">Sign Up</a>
+            <button class="search-toggle"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="logged-in-only" style="display: none;">
+
+            <div class="dropdown-menu">
+                <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                <a href="saved-articles.html"><i class="fas fa-bookmark"></i> Saved Articles</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js"></script>
+
+    <!-- Custom Scripts -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/community.js"></script>
+
+    <!-- Auth State Check -->
+    <script type="module">
+        // Import auth functionality directly
+        import { auth } from './js/firebase-config.js';
+        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check authentication state
+            onAuthStateChanged(auth, (user) => {
+                const loginLinks = document.querySelectorAll('.login-btn, .signup-btn');
+                const userElements = document.querySelectorAll('.logged-in-only');
+                const loginTease = document.getElementById('login-tease');
+                const postCreation = document.querySelector('.post-creation-container');
+
+                if (user) {
+                    // User is signed in
+                    console.log('User is signed in:', user.displayName || user.email);
+
+                    // Update UI for logged in state
+                    loginLinks.forEach(link => link.style.display = 'none');
+                    userElements.forEach(element => {
+                        element.style.display = 'block';
+
+                        // Update user display name if available
+                        const userDisplayName = element.querySelector('.user-display-name');
+                        if (userDisplayName) {
+                            userDisplayName.textContent = user.displayName || user.email.split('@')[0];
+                        }
+
+                        // Update user avatar if available
+                        const userAvatar = element.querySelector('.user-avatar-img');
+                        if (userAvatar) {
+                            userAvatar.src = user.photoURL || 'img/default-avatar.png';
+                        }
+                    });
+
+                    // Show post creation & hide login tease
+                    if (loginTease) loginTease.style.display = 'none';
+                    if (postCreation) postCreation.style.display = 'block';
+
+                    // Handle logout
+                    const logoutButtons = document.querySelectorAll('.logout-btn');
+                    logoutButtons.forEach(button => {
+                        button.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            try {
+                                await signOut(auth);
+                                window.location.reload();
+                            } catch (error) {
+                                console.error("Logout error:", error);
+                            }
+                        });
+                    });
+                } else {
+                    // User is signed out
+                    console.log('User is signed out');
+
+                    // Update UI for logged out state
+                    loginLinks.forEach(link => link.style.display = 'inline-block');
+                    userElements.forEach(element => element.style.display = 'none');
+
+                    // Hide post creation & show login tease
+                    if (loginTease) loginTease.style.display = 'block';
+                    if (postCreation) postCreation.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+
+</div>
+</div>
+</header>
+
+<!-- Search Bar -->
+<div class="search-container">
+    <form action="search.html" method="get">
+        <input type="text" name="query" placeholder="Search for trending topics...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+
+<!-- Community Hero Section -->
+<section class="community-hero">
+    <div class="hero-content">
+        <h2>Join Our Community</h2>
+        <p>Connect, share, and discuss the latest trends with like-minded people from around the world.</p>
+
+        <div class="community-stats">
+            <div class="stat-item">
+                <div class="stat-number">15.4K+</div>
+                <div class="stat-label">Active Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">824</div>
+                <div class="stat-label">Posts Today</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3.2K+</div>
+                <div class="stat-label">Discussions</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Community Content -->
+<main class="container">
+    <div class="community-layout">
+        <div class="community-feed">
+            <!-- Login Tease for non-logged in users -->
+            <div id="login-tease" class="login-tease" style="display: none;">
+                <div class="login-tease-content">
+                    <h3>Join the Conversation</h3>
+                    <p>Log in or sign up to share your thoughts with the community.</p>
+                    <div class="login-tease-buttons">
+                        <a href="login.html" class="btn">Log In</a>
+                        <a href="signup.html" class="btn"
+                            style="background-color: white; color: #4285F4; border: 1px solid #4285F4;">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Creation Box -->
+            <div class="post-creation-container">
+                <h3>Share Your Thoughts</h3>
+                <form id="post-form" class="post-form">
+                    <textarea id="post-textarea" class="post-textarea"
+                        placeholder="What's trending for you today?"></textarea>
+
+                    <!-- Attachment Preview -->
+                    <div id="attachment-preview" class="attachment-preview" style="display: none;"></div>
+
+                    <!-- Hidden File Input -->
+                    <input type="file" id="post-attachment" style="display: none;">
+
+                    <div class="post-actions-bar">
+                        <div class="post-attachments">
+                            <button type="button" class="attachment-btn photo-btn">
+                                <i class="fas fa-image"></i> Photo
+                            </button>
+                            <button type="button" class="attachment-btn video-btn">
+                                <i class="fas fa-video"></i> Video
+                            </button>
+                            <button type="button" class="attachment-btn link-btn">
+                                <i class="fas fa-link"></i> Link
+                            </button>
+                            <button type="button" class="attachment-btn tag-btn">
+                                <i class="fas fa-hashtag"></i> Tag
+                            </button>
+                        </div>
+                        <button type="submit" class="btn">Post</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Post Filters -->
+            <div class="post-filters">
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">All Posts</button>
+                    <button class="filter-btn" data-filter="popular">Popular</button>
+                </div>
+                <div class="sort-dropdown">
+                    <button class="sort-btn">
+                        <i class="fas fa-sort"></i> <span id="current-sort">Newest First</span> <i
+                            class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="sort-options">
+                        <div class="sort-option" data-sort="newest">Newest First</div>
+                        <div class="sort-option" data-sort="popular">Most Liked</div>
+                        <div class="sort-option" data-sort="commented">Most Commented</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Posts -->
+            <div class="community-posts">
+                <!-- Posts will be loaded dynamically -->
+                <div class="loading-indicator">
+                    <i class="fas fa-spinner fa-spin"></i> Loading posts...
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container" style="text-align: center; margin-top: 2rem;">
+                <button id="load-more-btn" class="btn">Load More Posts</button>
+            </div>
+        </div>
+
+        <!-- Community Sidebar -->
+        <div class="community-sidebar">
+            <!-- Trending Topics Section -->
+            <div class="sidebar-section">
+                <h3>Trending Topics</h3>
+                <div class="trending-topics">
+                    <!-- Will be populated dynamically -->
+                    <div class="trending-topic">
+                        <span class="topic-hashtag">#AITechnology</span>
+                        <span class="topic-posts">542 posts</span>
+                    </div>
+                    <div class="trending-topic">
+                        <span class="topic-hashtag">#DigitalMarketing</span>
+                        <span class="topic-posts">387 posts</span>
+                    </div>
+                    <div class="trending-topic">
+                        <span class="topic-hashtag">#CryptoNews</span>
+                        <span class="topic-posts">324 posts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Users Section -->
+            <div class="sidebar-section">
+                <h3>Active Now</h3>
+                <div class="active-users">
+                    <!-- Will be populated dynamically -->
+                    <div class="active-user">
+                        <img src="img/default-avatar.png" alt="User Avatar">
+                        <span>@tech_guru</span>
+                    </div>
+                    <div class="active-user">
+                        <img src="img/default-avatar.png" alt="User Avatar">
+                        <span>@finance_pro</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events Section -->
+            <div class="sidebar-section">
+                <h3>Upcoming Events</h3>
+                <div class="upcoming-events">
+                    <!-- Will be populated dynamically -->
+                    <div class="event-card">
+                        <div class="event-date">March 15, 2025 • 3:00 PM</div>
+                        <div class="event-title">Digital Marketing Masterclass</div>
+                        <div class="event-description">Learn proven strategies to grow your online presence from
+                            industry experts.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Join Community CTA -->
+            <div class="sidebar-section" style="text-align: center;">
+                <a href="signup.html" class="btn" style="width: 100%;">Join Our Community</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>Trends Virals</h2>
+            <p>Your Hub for Trending Content</p>
+        </div>
+
+        <div class="footer-links">
+            <div class="link-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="finance.html">Finance</a></li>
+                    <li><a href="entertainment.html">Entertainment</a></li>
+                    <li><a href="sports.html">Sports</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="internet.html">Internet</a></li>
+                </ul>
+            </div>
+
+            <div class="link-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="community.html">Forums</a></li>
+                    <li><a href="community-guidelines.html">Guidelines</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="events.html">Events</a></li>
+                </ul>
+            </div>
+
+            <div class="link-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="press.html">Press</a></li>
+                </ul>
+            </div>
+
+            <div class="link-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Trends Virals</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body data-page="signup">
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <h1><a href="index.html">Trends Virals</a></h1>
+            <p class="tagline">Discover What's Trending</p>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="community.html">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sign Up Form -->
+    <section class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Create Account</h2>
+                <p>Join our community and stay updated with the latest trends!</p>
+            </div>
+
+            <div class="auth-options">
+                <button class="social-auth-btn google-btn">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+            </div>
+
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                        <button type="button" class="toggle-password">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar"></div>
+                        <span class="strength-text">Password strength</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <div class="password-input">
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm your password"
+                            required>
+                        <button type="button" class="toggle-password">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="terms-policy">
+                    <input type="checkbox" id="agree-terms" required>
+                    <label for="agree-terms">I agree to the <a href="terms.html">Terms of Service</a> and <a
+                            href="privacy.html">Privacy Policy</a></label>
+                </div>
+
+                <div class="auth-message" id="signup-message"></div>
+
+                <button type="submit" class="btn auth-btn">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Log In</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Trends Virals</h2>
+                <p>Your Hub for Trending Content</p>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Trends Virals. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+
+    <!-- Custom Scripts -->
+    <script type="module" src="js/auth.js"></script>
+    <script type="module">
+        import { registerUser, signInWithGoogle } from './js/auth.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle form submission
+            const signupForm = document.getElementById('signup-form');
+            if (signupForm) {
+                signupForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const name = document.getElementById('signup-name').value;
+                    const email = document.getElementById('signup-email').value;
+                    const password = document.getElementById('signup-password').value;
+                    const confirmPassword = document.getElementById('signup-confirm-password').value;
+                    const agreeTerms = document.getElementById('agree-terms').checked;
+                    const messageElement = document.getElementById('signup-message');
+
+                    // Validate form
+                    if (!name || !email || !password || !confirmPassword) {
+                        showMessage(messageElement, 'Please fill in all fields.', 'error');
+                        return;
+                    }
+
+                    if (password !== confirmPassword) {
+                        showMessage(messageElement, 'Passwords do not match.', 'error');
+                        return;
+                    }
+
+                    if (!isStrongPassword(password)) {
+                        showMessage(messageElement, 'Please choose a stronger password.', 'error');
+                        return;
+                    }
+
+                    if (!agreeTerms) {
+                        showMessage(messageElement, 'Please agree to the Terms of Service and Privacy Policy.', 'error');
+                        return;
+                    }
+
+                    // Show loading state
+                    const submitBtn = signupForm.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.textContent;
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Creating Account...';
+
+                    // Register user
+                    const result = await registerUser(email, password, name);
+
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+
+                    if (result.success) {
+                        showMessage(messageElement, 'Account created successfully! Redirecting...', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+                    } else {
+                        let errorMessage = 'Registration failed. Please try again.';
+
+                        if (result.error.includes('email-already-in-use')) {
+                            errorMessage = 'This email is already in use. Please try another email or login.';
+                        } else if (result.error.includes('invalid-email')) {
+                            errorMessage = 'Please enter a valid email address.';
+                        } else if (result.error.includes('weak-password')) {
+                            errorMessage = 'Password is too weak. Please choose a stronger password.';
+                        }
+
+                        showMessage(messageElement, errorMessage, 'error');
+                    }
+                });
+            }
+
+            // Google sign-in
+            const googleBtn = document.querySelector('.google-btn');
+            if (googleBtn) {
+                googleBtn.addEventListener('click', async () => {
+                    try {
+                        const result = await signInWithGoogle();
+                        if (result.success) {
+                            window.location.href = 'index.html';
+                        } else {
+                            showMessage(document.getElementById('signup-message'),
+                                'Google sign-in failed. Please try again.', 'error');
+                        }
+                    } catch (error) {
+                        showMessage(document.getElementById('signup-message'),
+                            'Google sign-in failed. Please try again.', 'error');
+                    }
+                });
+            }
+
+            // Password strength meter
+            const passwordInput = document.getElementById('signup-password');
+            if (passwordInput) {
+                passwordInput.addEventListener('input', updatePasswordStrength);
+            }
+
+            // Toggle password visibility
+            const togglePasswordBtns = document.querySelectorAll('.toggle-password');
+            togglePasswordBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const passwordInput = this.parentElement.querySelector('input');
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+
+                    // Toggle eye icon
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-eye');
+                    icon.classList.toggle('fa-eye-slash');
+                });
+            });
+        });
+
+        // Update password strength indicator
+        function updatePasswordStrength() {
+            const password = document.getElementById('signup-password').value;
+            const strengthBar = document.querySelector('.strength-bar');
+            const strengthText = document.querySelector('.strength-text');
+
+            if (!password) {
+                strengthBar.className = 'strength-bar';
+                strengthText.textContent = 'Password strength';
+                return;
+            }
+
+            // Calculate password strength
+            let strength = 0;
+            if (password.length >= 8) strength += 1;
+            if (/[a-z]/.test(password)) strength += 1;
+            if (/[A-Z]/.test(password)) strength += 1;
+            if (/[0-9]/.test(password)) strength += 1;
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 1;
+
+            // Update UI based on strength score
+            if (strength <= 2) {
+                strengthBar.className = 'strength-bar weak';
+                strengthText.textContent = 'Weak password';
+            } else if (strength <= 4) {
+                strengthBar.className = 'strength-bar medium';
+                strengthText.textContent = 'Medium strength';
+            } else {
+                strengthBar.className = 'strength-bar strong';
+                strengthText.textContent = 'Strong password';
+            }
+        }
+
+        // Check if password meets strength requirements
+        function isStrongPassword(password) {
+            // At least 8 characters with some complexity
+            return password.length >= 8 &&
+                /[a-z]/.test(password) &&
+                (/[A-Z]/.test(password) || /[0-9]/.test(password) || /[^a-zA-Z0-9]/.test(password));
+        }
+
+        // Helper function to show messages
+        function showMessage(element, message, type) {
+            if (!element) return;
+
+            element.textContent = message;
+            element.className = 'auth-message ' + type;
+            element.style.display = 'block';
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    element.style.display = 'none';
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+
+</html>

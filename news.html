@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - Trends Virals</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body data-page="news">
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <h1><a href="index.html">Trends Virals</a></h1>
+            <p class="tagline">Discover What's Trending</p>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="community.html">Community</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-section">
+            <a href="login.html" class="btn login-btn">Log In</a>
+            <a href="signup.html" class="btn signup-btn">Sign Up</a>
+            <button class="search-toggle"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="logged-in-only" style="display: none;">
+
+            <div class="dropdown-menu">
+                <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                <a href="saved-articles.html"><i class="fas fa-bookmark"></i> Saved Articles</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <form id="news-search-form">
+            <input type="text" name="query" id="search-input" placeholder="Search for news...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <!-- News Hero Section -->
+    <section class="news-hero">
+        <div class="news-hero-content">
+            <h2>Latest News & Headlines</h2>
+            <p>Stay informed with the most recent stories and updates from around the world.</p>
+        </div>
+    </section>
+
+    <!-- News Categories -->
+    <section class="news-categories">
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="general">General</button>
+            <button class="category-tab" data-category="business">Business</button>
+            <button class="category-tab" data-category="technology">Technology</button>
+            <button class="category-tab" data-category="entertainment">Entertainment</button>
+            <button class="category-tab" data-category="sports">Sports</button>
+            <button class="category-tab" data-category="science">Science</button>
+            <button class="category-tab" data-category="health">Health</button>
+        </div>
+    </section>
+
+    <!-- News Filters -->
+    <section class="news-filters">
+        <div class="filter-container">
+            <div class="filter-group">
+                <label for="country-filter">Country:</label>
+                <select id="country-filter">
+                    <option value="us">United States</option>
+                    <option value="gb">United Kingdom</option>
+                    <option value="ca">Canada</option>
+                    <option value="au">Australia</option>
+                    <option value="in">India</option>
+                    <option value="fr">France</option>
+                    <option value="de">Germany</option>
+                    <option value="jp">Japan</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sort-by">Sort By:</label>
+                <select id="sort-by">
+                    <option value="publishedAt">Newest First</option>
+                    <option value="relevancy">Relevance</option>
+                    <option value="popularity">Popularity</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="date-filter">Date Range:</label>
+                <select id="date-filter">
+                    <option value="today">Today</option>
+                    <option value="week">Past Week</option>
+                    <option value="month">Past Month</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Content -->
+    <section class="news-content">
+        <div class="container">
+            <!-- Featured Article -->
+            <div class="featured-article" id="featured-article">
+                <!-- Featured article will be populated by JavaScript -->
+                <div class="loader"></div>
+            </div>
+
+            <!-- Article Grid -->
+            <div class="article-grid" id="article-grid">
+                <!-- Articles will be populated by JavaScript -->
+                <div class="loader"></div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button id="load-more" class="btn load-more-btn">Load More Articles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Stay Updated with Trends Virals</h2>
+            <p>Subscribe to our newsletter and never miss the latest news and trends.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Trends Virals</h2>
+                <p>Your Hub for Trending Content</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="finance.html">Finance</a></li>
+                        <li><a href="entertainment.html">Entertainment</a></li>
+                        <li><a href="sports.html">Sports</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="internet.html">Internet</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="community.html">Forums</a></li>
+                        <li><a href="community-guidelines.html">Guidelines</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="social-media">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Trends Virals. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="error-modal" id="error-modal">
+        <div class="error-content">
+            <span class="close-error">&times;</span>
+            <h3>Error</h3>
+            <p id="error-message">Something went wrong. Please try again later.</p>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+
+    <!-- Custom Scripts -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/news.js"></script>
+
+    <!-- Auth State Check -->
+    <script type="module">
+        import { onAuthStateChange, logoutUser } from './js/auth.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check authentication state
+            onAuthStateChange(user => {
+                const loginLinks = document.querySelectorAll('.login-btn, .signup-btn');
+                const userElements = document.querySelectorAll('.logged-in-only');
+
+                if (user) {
+                    // User is signed in
+                    loginLinks.forEach(link => link.style.display = 'none');
+                    userElements.forEach(element => {
+                        element.style.display = 'block';
+
+                        // Update user display name if available
+                        const userDisplayName = element.querySelector('.user-display-name');
+                        if (userDisplayName) {
+                            userDisplayName.textContent = user.displayName || user.email.split('@')[0];
+                        }
+
+                        // Update user avatar if available
+                        const userAvatar = element.querySelector('.user-avatar-img');
+                        if (userAvatar) {
+                            userAvatar.src = user.photoURL || 'img/default-avatar.png';
+                        }
+                    });
+
+                    // Handle logout
+                    const logoutButtons = document.querySelectorAll('.logout-btn');
+                    logoutButtons.forEach(button => {
+                        button.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            await logoutUser();
+                            window.location.reload();
+                        });
+                    });
+                } else {
+                    // User is signed out
+                    loginLinks.forEach(link => link.style.display = 'inline-block');
+                    userElements.forEach(element => element.style.display = 'none');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,374 @@
+/* auth.css - Styles for authentication pages */
+
+/* Auth Section Container */
+.auth-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 300px);
+}
+
+.auth-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Auth Header */
+.auth-header {
+    padding: 30px;
+    text-align: center;
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.auth-header h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.auth-header p {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Auth Content */
+.auth-content {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon-wrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.input-icon-wrapper input {
+    padding-left: 45px;
+}
+
+.input-note {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Form Controls */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Password Toggle Button */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #777;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+}
+
+.toggle-password:focus {
+    outline: none;
+}
+
+/* Password Strength Meter */
+.password-strength {
+    margin-top: 10px;
+}
+
+.strength-meter {
+    height: 5px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    background-color: #f00;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strength-text {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.reset-password-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.reset-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Terms Checkbox */
+.terms-group {
+    display: flex;
+    align-items: flex-start;
+}
+
+.terms-group input[type="checkbox"] {
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.terms-group label {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.terms-group a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+/* Auth Buttons */
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-btn:hover {
+    background-color: #2563eb;
+}
+
+.auth-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+
+/* Auth Divider */
+.auth-divider {
+    position: relative;
+    margin: 25px 0;
+    text-align: center;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e5e7eb;
+}
+
+.auth-divider span {
+    position: relative;
+    padding: 0 15px;
+    background-color: #fff;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Social Auth */
+.social-auth {
+    margin-bottom: 20px;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-btn i {
+    margin-right: 10px;
+    color: #ea4335;
+}
+
+.google-btn:hover {
+    background-color: #f8f9fa;
+}
+
+/* Auth Footer */
+.auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: #666;
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Auth Error Message */
+.auth-error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Reset Success Message */
+.reset-success,
+.signup-success {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.reset-success i,
+.signup-success i {
+    font-size: 48px;
+    color: #22c55e;
+    margin-bottom: 15px;
+}
+
+.reset-success h2,
+.signup-success h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.reset-success p,
+.signup-success p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.return-login {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.return-login:hover {
+    background-color: #2563eb;
+}
+
+/* Error State for Inputs */
+input.error {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+}
+
+.input-error {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+    .auth-container {
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .auth-section {
+        padding: 0;
+        background-color: #fff;
+    }
+
+    .auth-header {
+        border-radius: 0;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .reset-password-link {
+        margin-top: 10px;
+    }
+}

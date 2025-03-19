@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - Trends Virals</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body data-page="settings">
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo-container">
+            <h1>Trends Virals</h1>
+            <p class="tagline">Discover What's Trending</p>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="finance.html">Finance</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+                <li><a href="sports.html">Sports</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="internet.html">Internet</a></li>
+                <li><a href="community.html">Community</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-section">
+            <!-- Logged-in user dropdown (visible when logged in) -->
+            <div class="user-dropdown logged-in-only">
+                <div class="user-info">
+                    <img src="/img/default-avatar.png" alt="User Avatar" class="user-avatar-img">
+                    <span class="user-display-name">Username</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+                    <a href="profile.html#saved-articles"><i class="fas fa-bookmark"></i> Saved Articles</a>
+                    <a href="settings.html" class="active"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                </div>
+            </div>
+
+            <button class="search-toggle"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <form action="search.html" method="get">
+            <input type="text" name="query" placeholder="Search for trending topics...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <!-- Settings Section -->
+    <section class="settings-section">
+        <div class="settings-container">
+            <div class="settings-header">
+                <h2>Account Settings</h2>
+                <p>Manage your account preferences and settings</p>
+            </div>
+
+            <!-- Settings Tabs and Content -->
+            <div class="settings-content">
+                <!-- Tab Navigation -->
+                <div class="settings-tabs">
+                    <button class="settings-tab active" data-tab="account">
+                        <i class="fas fa-user-cog"></i> Account
+                    </button>
+                    <button class="settings-tab" data-tab="notifications">
+                        <i class="fas fa-bell"></i> Notifications
+                    </button>
+                    <button class="settings-tab" data-tab="privacy">
+                        <i class="fas fa-lock"></i> Privacy
+                    </button>
+                </div>
+
+                <!-- Tab Content Panels -->
+                <div class="settings-tab-panels">
+                    <!-- Account Settings Panel -->
+                    <div id="account" class="settings-tab-panel active">
+                        <h3>Account Information</h3>
+                        <form class="account-settings-form">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" value="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" value="" disabled>
+                                <p class="input-note">Email cannot be changed. Contact support for assistance.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="display-name">Display Name</label>
+                                <input type="text" id="display-name" name="display-name" value="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea id="bio" name="bio" rows="4"></textarea>
+                            </div>
+
+                            <div class="form-divider">
+                                <span>Password</span>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="button" class="change-password-toggle">Change Password</button>
+                            </div>
+
+                            <div class="change-password-section" style="display: none;">
+                                <div class="form-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input type="password" id="current-password" name="current-password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="new-password">New Password</label>
+                                    <input type="password" id="new-password" name="new-password">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm New Password</label>
+                                    <input type="password" id="confirm-password" name="confirm-password">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn save-btn">Save Changes</button>
+                        </form>
+                    </div>
+
+                    <!-- Notifications Settings Panel -->
+                    <div id="notifications" class="settings-tab-panel">
+                        <h3>Notification Preferences</h3>
+                        <div class="notification-settings">
+                            <div class="notification-setting">
+                                <div class="setting-info">
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive email notifications for important updates</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="notification-toggle" data-setting="email" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="notification-setting">
+                                <div class="setting-info">
+                                    <h4>Newsletter</h4>
+                                    <p>Receive our newsletter with trending content</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="notification-toggle" data-setting="newsletter"
+                                        checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="notification-setting">
+                                <div class="setting-info">
+                                    <h4>Comment Replies</h4>
+                                    <p>Get notified when someone replies to your comments</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="notification-toggle" data-setting="comment-replies"
+                                        checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="notification-setting">
+                                <div class="setting-info">
+                                    <h4>Post Interactions</h4>
+                                    <p>Get notified when someone interacts with your posts</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="notification-toggle" data-setting="post-interactions"
+                                        checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="notification-setting">
+                                <div class="setting-info">
+                                    <h4>Email Frequency</h4>
+                                    <p>How often would you like to receive email updates</p>
+                                </div>
+                                <select class="email-frequency">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Settings Panel -->
+                    <div id="privacy" class="settings-tab-panel">
+                        <h3>Privacy Settings</h3>
+                        <div class="privacy-settings">
+                            <div class="privacy-setting">
+                                <div class="setting-info">
+                                    <h4>Profile Visibility</h4>
+                                    <p>Control who can see your profile information</p>
+                                </div>
+                                <select class="privacy-select" data-setting="profile-visibility">
+                                    <option value="public">Public</option>
+                                    <option value="registered">Registered Users Only</option>
+                                    <option value="private">Private</option>
+                                </select>
+                            </div>
+
+                            <div class="privacy-setting">
+                                <div class="setting-info">
+                                    <h4>Show Activity</h4>
+                                    <p>Show your activity in public feeds</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="privacy-toggle" data-setting="show-activity" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="privacy-setting">
+                                <div class="setting-info">
+                                    <h4>Data Usage</h4>
+                                    <p>Allow us to use your data to improve your experience</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" class="privacy-toggle" data-setting="data-usage" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="form-divider">
+                                <span>Account Actions</span>
+                            </div>
+
+                            <div class="account-actions">
+                                <button class="btn download-data-btn">Download My Data</button>
+                                <button class="btn delete-account-btn">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Trends Virals</h2>
+                <p>Your Hub for Trending Content</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="finance.html">Finance</a></li>
+                        <li><a href="entertainment.html">Entertainment</a></li>
+                        <li><a href="sports.html">Sports</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="internet.html">Internet</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="social-media">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Trends Virals. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/settings.js"></script>
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.settings-tab').forEach(tab => {
+            tab.addEventListener('click', function () {
+                // Update active tab
+                document.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update active panel
+                const tabId = this.dataset.tab;
+                document.querySelectorAll('.settings-tab-panel').forEach(panel => panel.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Toggle password change form
+        const changePasswordToggle = document.querySelector('.change-password-toggle');
+        const passwordSection = document.querySelector('.change-password-section');
+
+        if (changePasswordToggle && passwordSection) {
+            changePasswordToggle.addEventListener('click', function () {
+                passwordSection.style.display = passwordSection.style.display === 'none' ? 'block' : 'none';
+                this.textContent = passwordSection.style.display === 'none' ? 'Change Password' : 'Cancel';
+            });
+        }
+
+        // Delete account confirmation
+        const deleteAccountBtn = document.querySelector('.delete-account-btn');
+
+        if (deleteAccountBtn) {
+            deleteAccountBtn.addEventListener('click', function () {
+                if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                    // This would trigger the account deletion process
+                    alert('Account deletion request submitted. You will receive an email with further instructions.');
+                }
+            });
+        }
+
+        // User dropdown toggle
+        const userInfo = document.querySelector('.user-info');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        if (userInfo && dropdownMenu) {
+            userInfo.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!userInfo.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

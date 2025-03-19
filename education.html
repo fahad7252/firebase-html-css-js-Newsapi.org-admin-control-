@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Trends Virals</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body data-page="education">
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo-container">
+            <h1>Trends Virals</h1>
+            <p class="tagline">Discover What's Trending</p>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="education.html" class="active">Education</a></li>
+                <li><a href="finance.html">Finance</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+                <li><a href="sports.html">Sports</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="internet.html">Internet</a></li>
+                <li><a href="community.html" class="highlight">Community</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-section">
+            <div class="anonymous-section" id="anonymous-section">
+                <a href="login.html" class="btn login-btn">Log In</a>
+                <a href="signup.html" class="btn signup-btn">Sign Up</a>
+            </div>
+            <div class="user-profile" id="user-profile" style="display: none;">
+                <img src="img/default-avatar.png" alt="User Avatar" class="user-avatar">
+                <div class="dropdown">
+                    <button class="dropdown-toggle"><span class="username">User</span> <i
+                            class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-menu">
+                        <a href="profile.html">Profile</a>
+                        <a href="#" id="logout-button">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="search-toggle"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Search Bar (Hidden by default, shown when search icon is clicked) -->
+    <div class="search-container">
+        <form action="search.html" method="get">
+            <input type="text" name="query" placeholder="Search for educational content...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <!-- Education Hero Section -->
+    <section class="category-hero education-hero">
+        <div class="hero-content">
+            <h2>Education Trends</h2>
+            <p>Discover the latest innovations, resources, and insights in the world of education.</p>
+        </div>
+    </section>
+
+    <!-- Main Education Content -->
+    <main class="container">
+        <div class="page-layout">
+            <!-- Main content area -->
+            <div class="main-content">
+                <!-- Featured Courses Section -->
+                <section class="featured-courses">
+                    <div class="section-header">
+                        <h2>Featured Courses</h2>
+                        <div class="category-filter">
+                            <button class="filter-btn active" data-category="all">All</button>
+                            <button class="filter-btn" data-category="tech">Technology</button>
+                            <button class="filter-btn" data-category="business">Business</button>
+                            <button class="filter-btn" data-category="science">Science</button>
+                            <button class="filter-btn" data-category="arts">Arts & Humanities</button>
+                            <button class="filter-btn" data-category="languages">Languages</button>
+                        </div>
+                    </div>
+
+                    <div class="course-cards" id="featured-courses">
+                        <!-- Courses will be loaded here via JavaScript/API -->
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="img/placeholder.jpg" alt="Course Thumbnail">
+                                <span class="course-tag tech">Technology</span>
+                                <span class="course-level">Beginner</span>
+                            </div>
+                            <div class="course-content">
+                                <h3>Introduction to Data Science</h3>
+                                <p class="course-instructor">By Dr. Jane Smith</p>
+                                <p class="course-description">Learn the fundamentals of data science, including data
+                                    analysis, visualization, and machine learning basics.</p>
+                                <div class="course-meta">
+                                    <span><i class="fas fa-star"></i> 4.8 (1,254 reviews)</span>
+                                    <span><i class="fas fa-users"></i> 25,000+ students</span>
+                                </div>
+                                <a href="#" class="btn course-btn">View Course</a>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="img/placeholder.jpg" alt="Course Thumbnail">
+                                <span class="course-tag business">Business</span>
+                                <span class="course-level">Intermediate</span>
+                            </div>
+                            <div class="course-content">
+                                <h3>Digital Marketing Mastery</h3>
+                                <p class="course-instructor">By John Davis</p>
+                                <p class="course-description">Master the strategies and tools to create effective
+                                    digital
+                                    marketing campaigns and grow your online presence.</p>
+                                <div class="course-meta">
+                                    <span><i class="fas fa-star"></i> 4.7 (982 reviews)</span>
+                                    <span><i class="fas fa-users"></i> 18,500+ students</span>
+                                </div>
+                                <a href="#" class="btn course-btn">View Course</a>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="img/placeholder.jpg" alt="Course Thumbnail">
+                                <span class="course-tag science">Science</span>
+                                <span class="course-level">Advanced</span>
+                            </div>
+                            <div class="course-content">
+                                <h3>Quantum Physics: Modern Perspectives</h3>
+                                <p class="course-instructor">By Prof. Robert Chen</p>
+                                <p class="course-description">Explore the fascinating world of quantum mechanics and its
+                                    applications in modern technology.</p>
+                                <div class="course-meta">
+                                    <span><i class="fas fa-star"></i> 4.9 (756 reviews)</span>
+                                    <span><i class="fas fa-users"></i> 12,300+ students</span>
+                                </div>
+                                <a href="#" class="btn course-btn">View Course</a>
+                            </div>
+                        </div>
+
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="img/placeholder.jpg" alt="Course Thumbnail">
+                                <span class="course-tag languages">Languages</span>
+                                <span class="course-level">Beginner</span>
+                            </div>
+                            <div class="course-content">
+                                <h3>Spanish for Beginners: Complete Course</h3>
+                                <p class="course-instructor">By Maria Rodriguez</p>
+                                <p class="course-description">Start your journey to Spanish fluency with this
+                                    comprehensive course for beginners.</p>
+                                <div class="course-meta">
+                                    <span><i class="fas fa-star"></i> 4.8 (2,103 reviews)</span>
+                                    <span><i class="fas fa-users"></i> 35,700+ students</span>
+                                </div>
+                                <a href="#" class="btn course-btn">View Course</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Educational News Section -->
+                <section class="educational-news">
+                    <div class="section-header">
+                        <h2>Educational Trends</h2>
+                    </div>
+
+                    <div class="articles-grid" id="education-news">
+                        <!-- Articles will be loaded here via JavaScript/API -->
+                        <article class="article-card">
+                            <img src="img/placeholder.jpg" alt="Article Image">
+                            <div class="article-content">
+                                <h3>How AI is Transforming Modern Education</h3>
+                                <p class="excerpt">Artificial intelligence is reshaping how students learn and how
+                                    educators teach. Here's what you need to know.</p>
+                                <div class="article-meta">
+                                    <span class="date">March 10, 2025</span>
+                                    <a href="#" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <img src="img/placeholder.jpg" alt="Article Image">
+                            <div class="article-content">
+                                <h3>The Rise of Microlearning: Small Lessons, Big Impact</h3>
+                                <p class="excerpt">Explore how bite-sized learning modules are becoming the
+                                    preferred method for skill acquisition in busy professionals.</p>
+                                <div class="article-meta">
+                                    <span class="date">March 8, 2025</span>
+                                    <a href="#" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <img src="img/placeholder.jpg" alt="Article Image">
+                            <div class="article-content">
+                                <h3>Top Universities Announce Innovative Degree Programs</h3>
+                                <p class="excerpt">Leading institutions are launching new programs that blend
+                                    traditional academics with emerging career fields.</p>
+                                <div class="article-meta">
+                                    <span class="date">March 5, 2025</span>
+                                    <a href="#" class="read-more">Read More</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Educational Resources Section -->
+                <section class="educational-resources">
+                    <div class="section-header">
+                        <h2>Free Learning Resources</h2>
+                    </div>
+
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3>E-Books & Publications</h3>
+                                <p>Access thousands of free educational e-books, research papers, and publications
+                                    across various subjects.</p>
+                                <a href="#" class="btn resource-btn">Browse Library</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3>Video Tutorials</h3>
+                                <p>Watch instructional videos and lectures from top educators and institutions
+                                    around the world.</p>
+                                <a href="#" class="btn resource-btn">Watch Videos</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3>Educational Tools</h3>
+                                <p>Discover free tools and software to enhance your learning experience and
+                                    productivity.</p>
+                                <a href="#" class="btn resource-btn">Explore Tools</a>
+                            </div>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-puzzle-piece"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3>Interactive Exercises</h3>
+                                <p>Practice your skills with interactive quizzes, problems, and hands-on exercises.
+                                </p>
+                                <a href="#" class="btn resource-btn">Try Exercises</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Career Paths -->
+                <section class="career-paths">
+                    <div class="section-header">
+                        <h2>Trending Career Paths</h2>
+                    </div>
+
+                    <div class="career-slider">
+                        <div class="career-card">
+                            <img src="img/placeholder.jpg" alt="Career Path">
+                            <div class="career-content">
+                                <h3>Data Science</h3>
+                                <p>Median Salary: $120,000</p>
+                                <p>Growth Rate: 22% (Much faster than average)</p>
+                                <p>Required Skills: Python, Statistics, Machine Learning, Data Visualization</p>
+                                <a href="#" class="btn career-btn">Learn More</a>
+                            </div>
+                        </div>
+
+                        <div class="career-card">
+                            <img src="img/placeholder.jpg" alt="Career Path">
+                            <div class="career-content">
+                                <h3>Cybersecurity</h3>
+                                <p>Median Salary: $103,000</p>
+                                <p>Growth Rate: 33% (Much faster than average)</p>
+                                <p>Required Skills: Network Security, Ethical Hacking, Risk Assessment</p>
+                                <a href="#" class="btn career-btn">Learn More</a>
+                            </div>
+                        </div>
+
+                        <div class="career-card">
+                            <img src="img/placeholder.jpg" alt="Career Path">
+                            <div class="career-content">
+                                <h3>UX/UI Design</h3>
+                                <p>Median Salary: $92,000</p>
+                                <p>Growth Rate: 13% (Faster than average)</p>
+                                <p>Required Skills: User Research, Wireframing, Prototyping, Visual Design</p>
+                                <a href="#" class="btn career-btn">Learn More</a>
+                            </div>
+                        </div>
+
+                        <div class="career-navigation">
+                            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Featured Educators -->
+                <div class="sidebar-section">
+                    <h3>Featured Educators</h3>
+                    <div class="educators-list">
+                        <div class="educator-item">
+                            <img src="img/placeholder.jpg" alt="Educator Profile">
+                            <div class="educator-info">
+                                <h4>Dr. Sarah Johnson</h4>
+                                <p>Computer Science Professor</p>
+                                <div class="educator-stats">
+                                    <span><i class="fas fa-graduation-cap"></i> 35 courses</span>
+                                    <span><i class="fas fa-user-graduate"></i> 125K students</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="educator-item">
+                            <img src="img/placeholder.jpg" alt="Educator Profile">
+                            <div class="educator-info">
+                                <h4>Prof. Michael Lee</h4>
+                                <p>Business Strategy Expert</p>
+                                <div class="educator-stats">
+                                    <span><i class="fas fa-graduation-cap"></i> 22 courses</span>
+                                    <span><i class="fas fa-user-graduate"></i> 98K students</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="educator-item">
+                            <img src="img/placeholder.jpg" alt="Educator Profile">
+                            <div class="educator-info">
+                                <h4>Dr. Emily Chen</h4>
+                                <p>Neuroscience Researcher</p>
+                                <div class="educator-stats">
+                                    <span><i class="fas fa-graduation-cap"></i> 18 courses</span>
+                                    <span><i class="fas fa-user-graduate"></i> 72K students</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Educational Events -->
+                <div class="sidebar-section">
+                    <h3>Upcoming Events</h3>
+                    <div class="events-list">
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">18</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>Global Education Summit</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Virtual Event</p>
+                                <p><i class="fas fa-clock"></i> 9:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">25</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>AI in Education Workshop</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Tech Center, New York</p>
+                                <p><i class="fas fa-clock"></i> 10:00 AM - 3:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">2</span>
+                                <span class="month">Apr</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>Future of Learning Conference</h4>
+                                <p><i class="fas fa-map-marker-alt"></i> Convention Center, San Francisco</p>
+                                <p><i class="fas fa-clock"></i> 8:30 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending Educational Topics -->
+                <div class="sidebar-section">
+                    <h3>Trending Topics</h3>
+                    <div class="trending-topics">
+                        <div class="trending-topic">
+                            <span class="topic-name">Artificial Intelligence</span>
+                            <div class="trend-meter">
+                                <div class="trend-bar" style="width: 95%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="trending-topic">
+                            <span class="topic-name">Data Science</span>
+                            <div class="trend-meter">
+                                <div class="trend-bar" style="width: 92%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="trending-topic">
+                            <span class="topic-name">Remote Learning</span>
+                            <div class="trend-meter">
+                                <div class="trend-bar" style="width: 88%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="trending-topic">
+                            <span class="topic-name">Blockchain Technology</span>
+                            <div class="trend-meter">
+                                <div class="trend-bar" style="width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="trending-topic">
+                            <span class="topic-name">Augmented Reality</span>
+                            <div class="trend-meter">
+                                <div class="trend-bar" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Newsletter -->
+                <div class="sidebar-section newsletter-sidebar">
+                    <h3>Education Newsletter</h3>
+                    <p>Stay updated with the latest educational trends and resources.</p>
+                    <form class="newsletter-form-sidebar">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Community Highlights Section -->
+    <section class="community-highlights-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>From Our Community</h2>
+                <a href="community.html" class="view-all">Join the Conversation</a>
+            </div>
+
+            <div class="community-posts">
+                <!-- Will be populated dynamically from Firebase -->
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading community posts...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Stay Updated with Trends Virals</h2>
+            <p>Subscribe to our newsletter and never miss the latest trends across all categories.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Trends Virals</h2>
+                <p>Your Hub for Trending Content</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="finance.html">Finance</a></li>
+                        <li><a href="entertainment.html">Entertainment</a></li>
+                        <li><a href="sports.html">Sports</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="internet.html">Internet</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="community.html">Forums</a></li>
+                        <li><a href="community-guidelines.html">Guidelines</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="social-media">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Trends Virals. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js"></script>
+
+    <!-- Main Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+
+    <!-- API Scripts -->
+    <script src="js/api/education-api.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Trends Virals</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body data-page="profile">
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo-container">
+            <h1>Trends Virals</h1>
+            <p class="tagline">Discover What's Trending</p>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="finance.html">Finance</a></li>
+                <li><a href="entertainment.html">Entertainment</a></li>
+                <li><a href="sports.html">Sports</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="internet.html">Internet</a></li>
+                <li><a href="community.html">Community</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-section">
+            <!-- Logged-in user dropdown (visible when logged in) -->
+            <div class="user-dropdown logged-in-only">
+                <div class="user-info">
+                    <img src="/img/default-avatar.png" alt="User Avatar" class="user-avatar-img">
+                    <span class="user-display-name">Username</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="profile.html" class="active"><i class="fas fa-user"></i> My Profile</a>
+                    <a href="profile.html#saved-articles"><i class="fas fa-bookmark"></i> Saved Articles</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                </div>
+            </div>
+
+            <button class="search-toggle"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <form action="search.html" method="get">
+            <input type="text" name="query" placeholder="Search for trending topics...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="profile-container">
+            <!-- Profile Header with User Info -->
+            <div class="profile-info">
+                <div class="loading-spinner"></div>
+                <!-- Profile info will be loaded here -->
+            </div>
+
+            <!-- Profile Tabs and Content -->
+            <div class="profile-content">
+                <!-- Tab Navigation -->
+                <div class="profile-tabs">
+                    <button class="profile-tab active" data-tab="saved-articles">
+                        <i class="fas fa-bookmark"></i> Saved Articles
+                        <span class="saved-count">0</span>
+                    </button>
+                    <button class="profile-tab" data-tab="user-articles">
+                        <i class="fas fa-newspaper"></i> My Articles
+                    </button>
+                    <button class="profile-tab" data-tab="user-posts">
+                        <i class="fas fa-comment-alt"></i> My Posts
+                    </button>
+                    <button class="profile-tab" data-tab="activity">
+                        <i class="fas fa-chart-line"></i> Activity
+                    </button>
+                </div>
+
+                <!-- Tab Content Panels -->
+                <div class="profile-tab-panels">
+                    <!-- Saved Articles Panel -->
+                    <div id="saved-articles" class="profile-tab-panel active">
+                        <div class="loading-spinner"></div>
+                        <!-- Saved articles will be loaded here -->
+                    </div>
+
+                    <!-- User Articles Panel -->
+                    <div id="user-articles" class="profile-tab-panel">
+                        <div class="loading-spinner"></div>
+                        <!-- User articles will be loaded here -->
+                    </div>
+
+                    <!-- User Posts Panel -->
+                    <div id="user-posts" class="profile-tab-panel">
+                        <div class="loading-spinner"></div>
+                        <!-- User community posts will be loaded here -->
+                    </div>
+
+                    <!-- Activity Panel -->
+                    <div id="activity" class="profile-tab-panel">
+                        <div class="activity-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Articles</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-comment-alt"></i></div>
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Posts</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-comment"></i></div>
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Comments</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-bookmark"></i></div>
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Saved</div>
+                            </div>
+                        </div>
+
+                        <div class="activity-history">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-timeline">
+                                <div class="loading-spinner"></div>
+                                <!-- Activity timeline will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Trends Virals</h2>
+                <p>Your Hub for Trending Content</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="finance.html">Finance</a></li>
+                        <li><a href="entertainment.html">Entertainment</a></li>
+                        <li><a href="sports.html">Sports</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="internet.html">Internet</a></li>
+                    </ul>
+                </div>
+
+                <div class="link-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="social-media">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Trends Virals. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.profile-tab').forEach(tab => {
+            tab.addEventListener('click', function () {
+                // Update active tab
+                document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update active panel
+                const tabId = this.dataset.tab;
+                document.querySelectorAll('.profile-tab-panel').forEach(panel => panel.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+
+                // Update URL hash
+                window.location.hash = tabId;
+            });
+        });
+
+        // Check URL hash for initial tab selection
+        document.addEventListener('DOMContentLoaded', function () {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const tab = document.querySelector(`.profile-tab[data-tab="${hash}"]`);
+                if (tab) tab.click();
+            }
+        });
+
+        // User dropdown toggle
+        const userInfo = document.querySelector('.user-info');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        if (userInfo && dropdownMenu) {
+            userInfo.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!userInfo.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
